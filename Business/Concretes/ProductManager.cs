@@ -62,5 +62,14 @@ namespace Business.Concretes
         
             return _mapper.Map<UpdatedProductResponse>(product);
         }
+
+        public async Task<GetProductByIdResponse> GetById(GetProductByIdRequest getProductByIdRequest)
+        {
+            Product product = await _productDal.GetAsync(p => p.Id == getProductByIdRequest.Id, include: p => p.Include(p => p.Category));
+
+            return _mapper.Map<GetProductByIdResponse>(product);
+
+            
+        }
     }
 }

@@ -18,10 +18,12 @@ namespace Business.Profiles
             CreateMap<Product, CreateProductRequest>().ReverseMap();
             CreateMap<Product, DeleteProductRequest>().ReverseMap();
             CreateMap<Product, UpdateProductRequest>().ReverseMap();
+            CreateMap<Product, GetProductByIdRequest>().ReverseMap();
             CreateMap<Product, CreatedProductResponse>().ReverseMap();
             CreateMap<Product, UpdatedProductResponse>().ReverseMap();
             CreateMap<Product, DeletedProductResponse>().ReverseMap();
 
+            CreateMap<Product, GetProductByIdResponse>().ForMember(destinationMember: p => p.CategoryName, memberOptions: opt => opt.MapFrom(p => p.Category.Name)).ReverseMap();
             CreateMap<Product, GetListedProductResponse>().ForMember(destinationMember: p => p.CategoryName, memberOptions: opt => opt.MapFrom(p => p.Category.Name)).ReverseMap();
             CreateMap<Paginate<Product>, Paginate<GetListedProductResponse>>().ReverseMap();
         }

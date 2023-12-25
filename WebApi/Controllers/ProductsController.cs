@@ -41,5 +41,11 @@ namespace WebApi.Controllers
 			var result = await _productService.GetListAsync();
 			return Ok(result);
 		}
+		[HttpPost("GetById")]
+		public async Task<IActionResult> GetById(GetProductByIdRequest getProductByIdRequest)
+		{
+			var result = await _productService.GetById(getProductByIdRequest);
+			return Ok(result);
+		}
 	}
 }
